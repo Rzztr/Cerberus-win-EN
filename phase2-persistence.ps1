@@ -10,7 +10,7 @@ reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" "$out\HKCU_Run.r
 reg export "HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKLM_RunOnce.reg"
 reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKCU_RunOnce.reg"
 
-runKeys = @(
+$runKeys = @(
     "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run",
     "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run",
     "HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce",
