@@ -1,3 +1,4 @@
+$VerbosePreference = "Continue"
 echo "Phase 2 started... collecting info"
 
 sleep 5

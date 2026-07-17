@@ -1,4 +1,6 @@
+$VerbosePreference = "Continue"
 mkdir C:\Cerberus_collection
+Write-Verbose "Created collection directory C:\Cerberus_collection"
 
 $out = "C:\Cerberus_collection"
 
