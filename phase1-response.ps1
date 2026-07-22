@@ -1,8 +1,8 @@
 $VerbosePreference = "Continue"
-mkdir C:\Cerberus_collection
-Write-Verbose "Created collection directory C:\Cerberus_collection"
+. "$PSScriptRoot\globals.ps1"
 
-$out = "C:\Cerberus_collection"
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+Write-Verbose "Created collection directory $out"
 
 echo "Directory for logs created..."
 

@@ -1,3 +1,4 @@
+. "$PSScriptRoot\\globals.ps1"
 $VerbosePreference = "Continue"
 echo "Phase 2 started... collecting info"
 
@@ -5,10 +6,14 @@ sleep 5
 
 echo "collecting autorun services..."
 
-reg export "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" "$out\HKLM_Run.reg"
-reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" "$out\HKCU_Run.reg"
-reg export "HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKLM_RunOnce.reg"
-reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKCU_RunOnce.reg"
+if ($IsWindows) {
+    reg export "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" "$out\HKLM_Run.reg"
+    reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" "$out\HKCU_Run.reg"
+    reg export "HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKLM_RunOnce.reg"
+    reg export "HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce" "$out\HKCU_RunOnce.reg"
+} else {
+    Write-Verbose "Skipping registry export on non-Windows OS"
+}
 
 $runKeys = @(
     "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run",

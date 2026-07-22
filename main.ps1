@@ -11,7 +11,7 @@ $banner = @"
 
 Write-Host $banner -ForegroundColor Cyan
 Write-Verbose "Displayed banner"
-
+. "$PSScriptRoot\globals.ps1"
 class AnalisisFases {
     # Enable verbose output for this class
     hidden [bool]$VerboseEnabled = $true
@@ -85,27 +85,6 @@ class AnalisisFases {
         
         Write-Host "=== Análisis Finalizado ===" -ForegroundColor Yellow
         Write-Verbose "All phases completed"
-    }
-        Write-Host "=== Iniciando Análisis Forense Secuencial ===" -ForegroundColor Yellow
-        
-        # Mapeamos los números de fase con el nombre exacto de tu captura
-        $fases = @{
-            1 = "response"
-            2 = "persistence"
-            3 = "browserindicators"
-            4 = "minningDetection" # Ojo: "minning" con doble 'n' como en tu captura
-            5 = "susFiles"
-            6 = "networkTraffic"
-            7 = "YARAScan"
-            8 = "memory"
-        }
-
-        # Iteramos en orden del 1 al 8
-        for ($i = 1; $i -le 8; $i++) {
-            $this.EjecutarFase($i, $fases[$i])
-        }
-
-        Write-Host "=== Análisis Finalizado ===" -ForegroundColor Yellow
     }
 }
 

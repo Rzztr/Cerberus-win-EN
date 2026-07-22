@@ -1,6 +1,7 @@
 $VerbosePreference = "Continue"
+. "$PSScriptRoot\\globals.ps1"
 Write-Verbose "Starting Phase 3 - Browser Indicators collection"
-Write-Verbose "Starting Phase 4 - Crypto Wallet detection"
+
 
 sleep 5
 
@@ -14,14 +15,14 @@ if (Test-Path $chromeExt) {
             ExtensionID = $_.Directory.Parent.Name
             Name = $manifest.name
             Version = $manifest.version
-            Write-Verbose "Memory analysis instructions ready"
+            Notes = "Memory analysis instructions ready"
             Permissions = ($manifest.permissions -join ", ")
         }
     } | Out-File "$out\chrome_extensions.txt"
 }
 
 echo "checking for recent access to credentials and cookies files..."
-$VerbosePreference = "Continue"
+
 Write-Verbose "Starting Phase 5 - Suspicious files collection"
 
 $browserFiles = @(
